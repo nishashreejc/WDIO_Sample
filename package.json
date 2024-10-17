@@ -1,0 +1,36 @@
+{
+  "name": "typescript_wdio_cucumber",
+  "version": "1.0.0",
+  "description": "Typescript with WDIO and Cucumber",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "wdio": "wdio run ./wdio.conf.ts",
+    "generate-report": "node ./generate-report.js",
+    "wdio:generate-report": "wdio run ./wdio.conf.ts && ts-node ./generate-report.ts"
+  },
+  "author": "NishashreeJC",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^22.5.3",
+    "@wdio/allure-reporter": "^9.1.0",
+    "@wdio/cli": "^8.40.5",
+    "@wdio/cucumber-framework": "^8.40.5",
+    "@wdio/json-reporter": "^8.40.3",
+    "@wdio/junit-reporter": "^8.40",
+    "@wdio/local-runner": "^8.40.5",
+    "@wdio/logger": "^8.38.0",
+    "@wdio/spec-reporter": "^8.40.3",
+    "allure-commandline": "^2.30.0",
+    "multiple-cucumber-html-reporter": "^3.7.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4",
+    "wdio-cucumberjs-json-reporter": "^5.2.1",
+    "wdio-wait-for": "^3.0.11",
+    "webdriverio": "^8.40.5"
+  },
+  "dependencies": {
+    "tsconfig-paths": "^4.2.0"
+  }
+}
