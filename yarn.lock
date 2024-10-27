@@ -1645,7 +1645,7 @@ gaze@^1.1.3:
   dependencies:
     globule "^1.0.0"
 
-geckodriver@^4.3.1:
+geckodriver@^4.3.1, geckodriver@^4.5.1:
   version "4.5.1"
   resolved "https://registry.yarnpkg.com/geckodriver/-/geckodriver-4.5.1.tgz#624fc01815c1aa498dd3f717f7bd4c6cca0c57b8"
   integrity sha512-lGCRqPMuzbRNDWJOQcUqhNqPvNsIFu6yzXF8J/6K3WCYFd2r5ckbeF7h1cxsnjA7YLSEiWzERCt6/gjZ3tW0ug==

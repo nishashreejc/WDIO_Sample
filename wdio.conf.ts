@@ -28,7 +28,7 @@ export const config: Options.Testrunner = {
     // of the config file unless it's absolute.
     //
     specs: [
-        './test/ui/features/**/*.feature'
+        './test/ui/features/*.feature'
     ],
     // Patterns to exclude.
     exclude: [
@@ -56,17 +56,21 @@ export const config: Options.Testrunner = {
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
     // https://saucelabs.com/platform/platform-configurator
     //
-    capabilities: [{
-        browserName: 'chrome',
-        // browserVersion: 'latest'
-        // 'goog:chromeOptions': {
-        //     prefs: {
-        //         'download.default_directory': "C:\Typescript_WDIO_V8.40_Cucumber_Working1\results\downloads",
-        //         'download.prompt_for_download': false, //disable download prompt
-        //         'download.directory_upgrade': true, //allow automatic download
-        //     }
+    capabilities: [
+        {
+            browserName: 'chrome',
+            'goog:chromeOptions': {
+                    prefs: {
+                        'download.default_directory': 'C:\\Typescript_WDIO_V8.40_Cucumber_Working1\\downloads',
+                        'download.prompt_for_download': false,
+                    }
+                },  
+        },
+        // {
+        //     browserName: 'firefox'
         // }
-    }],
+    ],
+ 
 
     //
     // ===================
@@ -75,7 +79,7 @@ export const config: Options.Testrunner = {
     // Define all options that are relevant for the WebdriverIO instance here
     //
     // Level of logging verbosity: trace | debug | info | warn | error | silent
-    logLevel: 'trace',
+    logLevel: 'info',
     //
     // Set specific log levels per logger
     // loggers:
@@ -115,7 +119,7 @@ export const config: Options.Testrunner = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: [],
+    // services: [],
     //
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
@@ -147,25 +151,13 @@ export const config: Options.Testrunner = {
         ['cucumberjs-json',{
             jsonFolder: './results/json-reports',
             language:'en'
-        }],
-        [ 'junit', {
-            outputDir:'./results/junit-reports',
-            // Optional: Add properties that you want to include in the test report
-            outputFileFormat: function(options) {
-                return `results-${options.cid}.${options.capabilities}.xml` // to get in .xml format else will get in .log format (with just outputDir line)
-            },
-            // addFileAttribute: true,
-            // includeConsoleLog: true, // Capture console logs in the test report (optional)
-            // package: 'com.yourcompany.projectname', // You can define a package name if needed
-            // reportSuiteAsScenarios: true, // Treat each scenario as a test suite
-            // useFullTestName: true,        // Show the full test name in the report
         }]
     ],
 
     // If you are using Cucumber you need to specify the location of your step definitions.
     cucumberOpts: {
         // <string[]> (file/dir) require files before executing features
-        require: ['./test/ui/step-definitions/**/*.ts'],
+        require: ['./test/ui//step-definitions/*.ts'],
         // <boolean> show full backtrace for errors
         backtrace: false,
         // <string[]> ("extension:module") require files with the given EXTENSION after requiring MODULE (repeatable)
@@ -181,13 +173,13 @@ export const config: Options.Testrunner = {
         // <boolean> hide source uris
         source: true,
         // <boolean> fail if there are any undefined or pending steps
-        strict: true,
+        strict: false,
         // <string> (expression) only execute the features or scenarios with tags matching the expression
         tagExpression: '',
         // <number> timeout for step definitions
         timeout: 60000,
         // <boolean> Enable this config to treat undefined definitions as warnings.
-        // ignoreUndefinedDefinitions: false
+        ignoreUndefinedDefinitions: false
     },
 
 

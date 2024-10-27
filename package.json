@@ -23,6 +23,7 @@
     "@wdio/logger": "^8.38.0",
     "@wdio/spec-reporter": "^8.40.3",
     "allure-commandline": "^2.30.0",
+    "geckodriver": "^4.5.1",
     "multiple-cucumber-html-reporter": "^3.7.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.4",
