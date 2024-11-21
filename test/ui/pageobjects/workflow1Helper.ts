@@ -118,16 +118,33 @@ export class workflow1Helper {
             myItemsActualMap.set(elementInCartText, j);   // cartItem Names loaded in as keys of map "myItemsActualMap"
         }
         
-        let products = testData.products; //inner json
-        let cartItemValues = Object.values(Object.values(products));
-        for (let i=0; i<=(cartItemValues.length-1); i++) {  // iterate through all values in json and check if it exists in map as key (loaded from cart)
-            let expectedCartItem = cartItemValues[i];
-            expect(myItemsActualMap.has(expectedCartItem)).toEqual(true);
+        // let products = testData.products; //inner json
+        // let cartItemValues = Object.values(Object.values(products));
+        // for (let i=0; i<=(cartItemValues.length-1); i++) {  // iterate through all values in json and check if it exists in map as key (loaded from cart)
+        //     let expectedCartItem = cartItemValues[i];
+        //     expect(myItemsActualMap.has(expectedCartItem)).toEqual(true);
+        // }
+
+
+        // alternative optimized code below using for in loop and declaring type to avoide typescript error
+
+        // for (const key in testData.products){
+        //     expect(myItemsActualMap.has(testData.products[key])).toEqual(true); // this will throw tyrpecript error  -Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '
+        // }   // to overcome this error use below for loop and declare "let products:Record<string, any> = testData.products;"" //inner json
+
+        //optimized previous for loop - 5 lines of code written in 2 lines 
+        let products:Record<string, any> = testData.products; //inner json
+        for (const key in products){
+            expect(myItemsActualMap.has(products[key])).toEqual(true);
         }
+
     }
 
+
     async fillDetailsInCheckoutPage() {
-        await(await this.firstName).setValue(testData.FirstName);
+        const firstName = await this.firstName;
+        await firstName.waitForDisplayed();
+        await firstName.setValue(testData.FirstName);
         await(await this.lastName).setValue(testData.LastName);
         await(await this.postalCode).setValue(testData.PostalCode);
         await(await this.continueButton).click();

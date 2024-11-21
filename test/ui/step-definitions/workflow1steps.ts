@@ -90,12 +90,15 @@ When(/^User logs off$/, async()=>{
 })
 
 Then(/^User is on SwagLabs loginpage$/, async()=>{
-    await(await browser.$(`#login-button`)).isDisplayed();
+    let loginButonVisible:boolean = await(await browser.$(`#login-button`)).isDisplayed();
+    expect(loginButonVisible).toEqual(true);
 })
 
 
-
-
+// do not use locators in steps (use POM)
+// use isDisplayed(); before each element click or setText();
+// all test data needs to be passed from step definition as parameter 
+// all locators also need to be passed from getters or from functions if "parameterized locator"
 
 
 
